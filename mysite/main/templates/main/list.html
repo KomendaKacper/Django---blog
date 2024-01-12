@@ -3,8 +3,8 @@
 
 {% block content %}
     <h1>{{ls.name}}</h1>
-    <form methon="post" action="#">
-        {% csrf_token %}
+    <form method="post" action="#">
+    {% csrf_token %}
         <ul>
             {% for item in ls.item_set.all %}
                 {% if item.complete == True %}

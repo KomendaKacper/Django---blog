@@ -4,8 +4,8 @@ from .models import ToDoList, Item
 from .forms import CreateNewList
 # Create your views here.
 
-def index(response, name):
-    ls = ToDoList.objects.get(name = name)
+def index(response, id):
+    ls = ToDoList.objects.get(id = id)
     if response.method == "POST":
         print (response.POST)
         if response.POST.get("save"):
@@ -21,11 +21,9 @@ def index(response, name):
             txt = response.POST.get("new")
 
             if len(txt) > 2:
-                ls.item_ser.create(text=txt, complete=False)
+                ls.item_set.create(text=txt, complete=False)
             else:
                 print ("invalid")
-
-
 
     return render (response, "main/list.html", {"ls":ls})
 
